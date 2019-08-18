@@ -1,13 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import Navbar from "./components/Navbar";
+import About from "./About";
 import PhoneList from "./components/PhoneList";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
   return (
     <MainWrapper>
-      <Navbar />
-      <PhoneList />
+      <Router>
+        <Navbar />
+        <Route exact path="/" component={PhoneList} />
+        <Route path="/about" component={About} />
+      </Router>
     </MainWrapper>
   );
 }
@@ -16,7 +21,7 @@ export default App;
 
 const MainWrapper = styled.div`
   width: 100%;
-  max-width: 900px;
+  max-width: 980px;
   margin: 0 auto;
   padding-left: 15px;
   padding-right: 15px;

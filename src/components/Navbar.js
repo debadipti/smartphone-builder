@@ -1,31 +1,39 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   return (
     <Header>
-      <h1>Smartphone Builder</h1>
-      <span>
+      <h3>
+        <Link to="/">Smartphone Builder</Link>
+      </h3>
+      <LinkStyle to="/about">
         <i className="material-icons">info</i> About
-      </span>
+      </LinkStyle>
     </Header>
   );
 }
 
 const Header = styled.header`
-  padding: 10px 0;
+  padding: 15px 10px;
   display: flex;
   align-items: center;
   border-bottom: 1px solid #ccc;
-  h1 {
+  h3 {
     margin: 0;
     flex: 1;
-  }
-  span {
-    display: inline-flex;
-    align-items: center;
-    i {
-      margin-right: 10px;
+    a {
+      text-decoration: none;
     }
+  }
+`;
+
+const LinkStyle = styled(Link)`
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  i {
+    margin-right: 10px;
   }
 `;
