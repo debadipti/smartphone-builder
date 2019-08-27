@@ -6,8 +6,13 @@ export default function Navbar() {
   return (
     <Header>
       <h3>
-        <Link to="/">Smartphone Builder</Link>
+        <Link to="/">
+          <i className="material-icons">build</i> Smartphone Builder
+        </Link>
       </h3>
+      <LinkStyle to="/wishlist">
+        <i className="material-icons">whatshot</i> Wishlist
+      </LinkStyle>
       <LinkStyle to="/about">
         <i className="material-icons">info</i> About
       </LinkStyle>
@@ -33,7 +38,8 @@ const LinkStyle = styled(Link)`
   text-decoration: none;
   display: inline-flex;
   align-items: center;
+  margin-left: 20px;
   i {
-    margin-right: 10px;
+    margin-right: 5px;
   }
 `;

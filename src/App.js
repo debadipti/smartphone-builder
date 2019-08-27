@@ -10,7 +10,18 @@ function App() {
     <MainWrapper>
       <Router>
         <Navbar />
-        <Route exact path="/" component={PhoneList} />
+        <Route
+          exact
+          path="/"
+          render={props => <PhoneList {...props} title={"All Phones"} />}
+        />
+        <Route
+          exact
+          path="/wishlist"
+          render={props => (
+            <PhoneList {...props} title={"My Wishlist"} wishlist />
+          )}
+        />
         <Route path="/about" component={About} />
       </Router>
     </MainWrapper>

@@ -4,9 +4,10 @@ import styled from "styled-components";
 export default function Phone(props) {
   return (
     <StyledPhone>
-      <h3>
-        {props.item.brand} {props.item.model}
-      </h3>
+      <PhoneTitle>
+        {props.item.brand} {props.item.model}{" "}
+        <Rating>{props.item.rating}</Rating>
+      </PhoneTitle>
       <span>
         <i className="material-icons">memory</i> {props.item.chipset}
       </span>
@@ -19,8 +20,8 @@ export default function Phone(props) {
         {props.item.internal}GB Internal
       </span>
       <span>
-        <i className="material-icons">camera_front</i> {props.item.internal}MP
-        Front Camera
+        <i className="material-icons">camera</i> {props.item.camera[0]}MP Main
+        Camera
       </span>
       <span>
         <i className="material-icons">camera_front</i> {props.item.frontCam}MP
@@ -37,7 +38,7 @@ const StyledPhone = styled.div`
   cursor: pointer;
   margin: 1rem;
   padding: 1rem;
-  span {
+  > span {
     display: flex;
     margin: 0.6rem 0;
     align-items: center;
@@ -48,4 +49,16 @@ const StyledPhone = styled.div`
       margin-right: 10px;
     }
   }
+`;
+
+const PhoneTitle = styled.h3`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const Rating = styled.span`
+  background-color: darkgray;
+  color: white;
+  padding: 2px 4px;
 `;

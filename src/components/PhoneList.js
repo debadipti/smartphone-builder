@@ -12,21 +12,25 @@ export default class PhoneList extends Component {
   }
 
   componentDidMount() {
-    fetch(
-      "https://raw.githubusercontent.com/debadipti/smartphone-builder/master/src/data/data.json"
-    )
-      .then(res => {
-        return res.json();
-      })
-      .then(json => {
-        this.setState({ list: json });
-      });
+    if (this.props.wishlist) {
+      console.log("handle favories");
+    } else {
+      fetch(
+        "https://raw.githubusercontent.com/debadipti/smartphone-builder/master/src/data/data.json"
+      )
+        .then(res => {
+          return res.json();
+        })
+        .then(json => {
+          this.setState({ list: json });
+        });
+    }
   }
 
   render() {
     return (
       <PhoneListStyle>
-        <h2>List of phones</h2>
+        <h2>{this.props.title}</h2>
         <List>
           {this.state.list.map(item => {
             return <Phone key={item.id} item={item} />;
