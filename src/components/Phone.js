@@ -12,11 +12,19 @@ export default function Phone(props) {
       </span>
       <span>
         <i className="material-icons">stay_primary_portrait</i>{" "}
-        {props.item.screen} {props.item.resolution}
+        {props.item.screen} inch, {props.item.resolution}
       </span>
       <span>
         <i className="material-icons">sd_card</i> {props.item.memory}GB RAM,{" "}
         {props.item.internal}GB Internal
+      </span>
+      <span>
+        <i className="material-icons">camera_front</i> {props.item.internal}MP
+        Front Camera
+      </span>
+      <span>
+        <i className="material-icons">camera_front</i> {props.item.frontCam}MP
+        Front Camera
       </span>
     </StyledPhone>
   );
