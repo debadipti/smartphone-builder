@@ -1,15 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import Navbar from "./components/Navbar";
-import About from "./About";
+import About from "./pages/About";
+import Features from "./pages/Features";
 import PhoneList from "./components/PhoneList";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
   return (
-    <MainWrapper>
-      <Router>
-        <Navbar />
+    <Router>
+      <Navbar />
+      <MainWrapper>
         <Route
           exact
           path="/"
@@ -23,17 +24,19 @@ function App() {
           )}
         />
         <Route path="/about" component={About} />
-      </Router>
-    </MainWrapper>
+        <Route path="/features" component={Features} />
+      </MainWrapper>
+    </Router>
   );
 }
 
 export default App;
 
+// styled components
 const MainWrapper = styled.div`
   width: 100%;
   max-width: 980px;
-  margin: 0 auto;
+  margin: 3rem auto;
   padding-left: 15px;
   padding-right: 15px;
 `;
