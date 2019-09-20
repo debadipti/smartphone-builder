@@ -3,10 +3,13 @@ import styled from "styled-components";
 
 export default function Phone(props) {
   return (
-    <StyledPhone>
+    <StyledPhone onClick={() => props.onPhoneClick()}>
       <PhoneTitle>
         {props.item.brand} {props.item.model}{" "}
-        <Rating>{props.item.rating}</Rating>
+        <Rating>
+          <i className="material-icons">star</i>
+          {props.item.rating}
+        </Rating>
       </PhoneTitle>
       <span>
         <i className="material-icons">memory</i> {props.item.chipset}
@@ -31,6 +34,7 @@ export default function Phone(props) {
   );
 }
 
+// styled components
 const StyledPhone = styled.div`
   background-color: #fff;
   border: 2px solid #ccc;
@@ -38,6 +42,9 @@ const StyledPhone = styled.div`
   cursor: pointer;
   margin: 1rem;
   padding: 1rem;
+  :hover {
+    background-color: #fafafa;
+  }
   > span {
     display: flex;
     margin: 0.6rem 0;
@@ -61,4 +68,10 @@ const Rating = styled.span`
   background-color: darkgray;
   color: white;
   padding: 2px 4px;
+  display: flex;
+  align-items: center;
+  i {
+    margin-right: 4px;
+    font-size: 16px;
+  }
 `;

@@ -1,19 +1,22 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Phone from "./Phone";
 import styled from "styled-components";
+import Modal from "./Modal";
 
 export default class PhoneList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       list: [],
-      open: false
+      selectedPhone: {},
+      detailsModal: false,
+      addModal: false
     };
   }
 
   componentDidMount() {
     if (this.props.wishlist) {
-      console.log("handle favories");
+      console.log("handle favorites");
     } else {
       fetch(
         "https://raw.githubusercontent.com/debadipti/smartphone-builder/master/src/data/data.json"
@@ -27,25 +30,62 @@ export default class PhoneList extends Component {
     }
   }
 
+  handlePhoneDetails = item => {
+    this.setState({ selectedPhone: item }, () => {
+      this.setState({ detailsModal: true });
+    });
+  };
+
   render() {
     return (
-      <PhoneListStyle>
-        <h2>{this.props.title}</h2>
-        <List>
-          {this.state.list.map(item => {
-            return <Phone key={item.id} item={item} />;
-          })}
-          <AddButton>
-            <i className="material-icons">add_circle_outline</i>
-          </AddButton>
-        </List>
-      </PhoneListStyle>
+      <Fragment>
+        <PhoneListStyle>
+          <h2>{this.props.title}</h2>
+          <List>
+            {this.state.list.map(item => {
+              return (
+                <Phone
+                  key={item.id}
+                  item={item}
+                  onPhoneClick={() => {
+                    this.handlePhoneDetails(item);
+                  }}
+                />
+              );
+            })}
+            <AddButton
+              onClick={() => {
+                this.setState({ addModal: true });
+              }}>
+              <i className="material-icons">add_circle_outline</i>
+            </AddButton>
+          </List>
+        </PhoneListStyle>
+        {this.state.detailsModal && (
+          <Modal
+            title="Phone Details"
+            onClose={() => {
+              this.setState({ detailsModal: false });
+            }}>
+            {this.state.selectedPhone.brand}
+          </Modal>
+        )}
+        {this.state.addModal && (
+          <Modal
+            title="Build Phone"
+            onClose={() => {
+              this.setState({ addModal: false });
+            }}>
+            <h1>Add Phone</h1>
+          </Modal>
+        )}
+      </Fragment>
     );
   }
 }
 
+// styled components
 const PhoneListStyle = styled.div`
-  margin: 3rem 0;
   h2 {
     margin: 1rem;
   }
@@ -70,7 +110,7 @@ const AddButton = styled.div`
   margin: 1rem;
   cursor: pointer;
   &:hover {
-    background: #f1f1f1;
+    background: #fafafa;
   }
   i {
     margin: auto;
