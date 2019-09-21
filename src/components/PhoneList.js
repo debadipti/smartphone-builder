@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import Phone from "./Phone";
 import styled from "styled-components";
-import Modal from "./Modal";
+import BuildPhoneModal from "./BuildPhoneModal";
 
 export default class PhoneList extends Component {
   constructor(props) {
@@ -61,23 +61,13 @@ export default class PhoneList extends Component {
             </AddButton>
           </List>
         </PhoneListStyle>
-        {this.state.detailsModal && (
-          <Modal
-            title="Phone Details"
-            onClose={() => {
-              this.setState({ detailsModal: false });
-            }}>
-            {this.state.selectedPhone.brand}
-          </Modal>
-        )}
         {this.state.addModal && (
-          <Modal
-            title="Build Phone"
+          <BuildPhoneModal
+            title="Build Your Phone"
             onClose={() => {
               this.setState({ addModal: false });
-            }}>
-            <h1>Add Phone</h1>
-          </Modal>
+            }}
+          />
         )}
       </Fragment>
     );
