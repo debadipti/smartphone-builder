@@ -1,23 +1,31 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 
-export default function Modal(props) {
-  return (
-    <ModalBack>
-      <ModalWrapper>
-        <ModalHead>
-          <h2>{props.title}</h2>
-          <span
-            className="material-icons"
-            onClick={props.onClose}
-            title="close">
-            close
-          </span>
-        </ModalHead>
-        {props.children}
-      </ModalWrapper>
-    </ModalBack>
-  );
+export default class Modal extends Component {
+  componentDidMount() {
+    document.getElementsByTagName("body")[0].style.overflow = "hidden";
+  }
+  componentWillUnmount() {
+    document.getElementsByTagName("body")[0].style.overflow = "auto";
+  }
+  render() {
+    return (
+      <ModalBack>
+        <ModalWrapper>
+          <ModalHead>
+            <h2>{this.props.title}</h2>
+            <span
+              className="material-icons"
+              onClick={this.props.onClose}
+              title="close">
+              close
+            </span>
+          </ModalHead>
+          {this.props.children}
+        </ModalWrapper>
+      </ModalBack>
+    );
+  }
 }
 
 // styled components
