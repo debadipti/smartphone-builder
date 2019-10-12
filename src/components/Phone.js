@@ -6,10 +6,12 @@ export default function Phone(props) {
     <StyledPhone onClick={() => props.onPhoneClick()}>
       <PhoneTitle>
         {props.item.brand} {props.item.model}{" "}
-        <Rating>
-          <i className="material-icons">star</i>
-          {props.item.rating}
-        </Rating>
+        {props.item.rating && (
+          <Rating>
+            <i className="material-icons">star</i>
+            {props.item.rating}
+          </Rating>
+        )}
       </PhoneTitle>
       <span>
         <i className="material-icons">memory</i> {props.item.chipset}

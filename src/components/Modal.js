@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 export default function Modal(props) {
+  // react useEffect hook
+  useEffect(() => {
+    document.getElementsByTagName("body")[0].style.overflow = "hidden";
+    return () => {
+      document.getElementsByTagName("body")[0].style.overflow = "auto";
+    };
+  });
+
   return (
     <ModalBack>
       <ModalWrapper>
