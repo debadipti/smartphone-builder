@@ -4,33 +4,25 @@
     "brand": "OnePlus",
     "model": "6",
     "screen": "6.28",
-    "resolution": "1080 x 2280",
-    "protection": "corning gorilla glass 5",
     "os": "android",
     "chipset": "qualcomm snapdragon 845",
     "memory": "8",
     "internal": "128",
     "camera": ["20", "12", "8"],
     "frontCam": "12",
-    "battery": "4000",
-    "color": "red",
-    "rating": "4.6"
+    "battery": "4000"
   },
   {
     "id": 2,
     "brand": "Samsung",
     "model": "S10",
     "screen": "6.1",
-    "resolution": "1440 x 3040",
-    "protection": "corning gorilla glass 6",
     "os": "android",
     "chipset": "exynos 9820",
     "memory": "8",
     "internal": "512",
     "camera": ["20", "12", "12"],
     "frontCam": "10",
-    "battery": "3400",
-    "color": "black",
-    "rating": "4.2"
+    "battery": "3400"
   }
 ]
